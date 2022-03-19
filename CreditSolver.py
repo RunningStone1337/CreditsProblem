@@ -5,7 +5,7 @@ class CreditSolver:
     credits_num = 0
 
     def __init__(self, credit_value: int):
-        self.credits_num = 1200000 / credit_value
+        self.credits_num = int(1200000 / credit_value)
 
     def solve(self):
         model = LpProblem("Maximize profit", LpMaximize)
