@@ -19,10 +19,11 @@ class CreditsProblem(QtWidgets.QMainWindow):
     def solve(self):
         self.ui.resultText.setText('')
         self.ui.resultTextManual.setText('')
-        solver = CreditSolver(credit_value=int(self.ui.valuePerCredit.text()))
+        cr_val=int(self.ui.valuePerCredit.text())
+        solver = CreditSolver(credit_value=cr_val)
         result = solver.solve()
         self.ui.resultText.setText(result)
-        manualSolver = MyCreditSolver(greens_per_credit=int(self.ui.valuePerCredit.text()))
+        manualSolver = MyCreditSolver(greens_per_credit=cr_val)
         result = manualSolver.solve()
         str_res = f"{result[0]} personal credits\n" \
                   f"{result[1]} auto credits\n" \
