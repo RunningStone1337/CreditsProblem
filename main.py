@@ -1,6 +1,4 @@
-import sys
 from PyQt5 import QtWidgets
-import saiio1
 from CreditSolver import *
 from saiio1 import Ui_MainWindow
 from MyCreditsSolver import *
@@ -24,13 +22,14 @@ class CreditsProblem(QtWidgets.QMainWindow):
         solver = CreditSolver(credit_value=int(self.ui.valuePerCredit.text()))
         result = solver.solve()
         self.ui.resultText.setText(result)
-        manualSolver = MyCreditSolver(greensPerCredit=int(self.ui.valuePerCredit.text()))
+        manualSolver = MyCreditSolver(greens_per_credit=int(self.ui.valuePerCredit.text()))
         result = manualSolver.solve()
-        self.ui.resultTextManual.setText(result)
-
-
-
-
+        str_res = f"{result[0]} personal credits\n" \
+                  f"{result[1]} auto credits\n" \
+                  f"{result[2]} housing credits\n" \
+                  f"{result[3]} agricult credits\n" \
+                  f"{result[4]} business credits"
+        self.ui.resultTextManual.setText(str_res)
 
 
 app = QtWidgets.QApplication([])
@@ -38,6 +37,3 @@ application = CreditsProblem()
 application.show()
 
 sys.exit(app.exec())
-
-
-
