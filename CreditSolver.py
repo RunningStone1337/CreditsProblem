@@ -19,11 +19,12 @@ class CreditSolver:
         model += personal + auto + housing + agricult + business <= self.credits_num  # summary constraint
         model += 0.1 * personal + 0.07 * auto + 0.03 * housing + 0.05 * agricult + 0.02 * business <= 0.04 * (
                 personal + auto + housing + agricult + business)  # non-return constraint
-        model += 0.4 * (personal + auto + housing + agricult + business) <= agricult + business   # 40% constraint
-        model += 0.5 * (personal + auto + housing + agricult + business) <= personal + auto + housing   # 50% constraint
+        model += 0.4 * (personal + auto + housing + agricult + business) <= agricult + business  # 40% constraint
+        model += 0.5 * (personal + auto + housing + agricult + business) <= personal + auto + housing  # 50% constraint
         model.solve()
         return str(f"{personal.varValue} personal credits\n"
                    f"{auto.varValue} auto credits\n"
                    f"{housing.varValue} housing credits\n"
                    f"{agricult.varValue} agricult credits\n"
-                   f"{business.varValue} business credits")
+                   f"{business.varValue} business credits\n"
+                   f"{0.14 * personal.varValue + 0.13 * auto.varValue + 0.12 * housing.varValue + 0.125 * agricult.varValue + 0.1 * business.varValue} total profit")

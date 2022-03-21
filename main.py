@@ -29,7 +29,8 @@ class CreditsProblem(QtWidgets.QMainWindow):
                   f"{result[1]} auto credits\n" \
                   f"{result[2]} housing credits\n" \
                   f"{result[3]} agricult credits\n" \
-                  f"{result[4]} business credits"
+                  f"{result[4]} business credits\n" \
+                  f"{0.14*result[0]+0.13*result[1]+0.12*result[2]+0.125*result[3]+0.1*result[4]} total profit"
         self.ui.resultTextManual.setText(str_res)
 
 
